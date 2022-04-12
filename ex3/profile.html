@@ -1,0 +1,55 @@
+<html>
+
+<body bgcolor="pink">
+    <script type="text/javascript">
+        function validate() {
+            var flag = 1;
+            if (document.myform.name.value == "" || document.myform.addr.value == "" || document.myform.phno.value == "" || document.myform.id.value == "" || document.myform.pwd.value == "") {
+                flag = 0;
+            }
+            alert("Enter all the details");
+            var str = document.myform.phno.value;
+            var x = new RegExp("\\d", "g");
+
+            if (!(str.match(x))) {
+                if (!(str.length == 10))
+                    flag = 0;
+            }
+
+            var str1 = document.myform.id.value;
+            var x1 = new RegExp("^[A-Z][a-zA-Z]+$", "g");
+            if (!str.match(x1)) {
+                flag = 0;
+                alert("Invalid UserID");
+            }
+            var str1 = document.myform.pwd.value;
+            var x1 = new RegExp("^[A-Z][a-zA-Z]+$", "g");
+            if (!(str1.match(x1))) {
+                if (flag == 1) {
+                    flag = 0;
+                    alert("Invalid password");
+                }
+                alert("VALID INPUT");
+                window.self.location.href = "login.html"
+            } else {
+                alert("INVALID INPUT");
+                document.myform.focus();
+            }
+        }
+    </script>
+    <form name="myform">
+        <div align="center">
+            <pre>
+                NAME: <input type="text" name="name"> <br>
+                PASSWORD: <input type="password" name="pwd"><br>
+            </pre>
+            <br><br>
+        </div>
+        <div align="center">
+            <input type="button" value="ok" onClick="validate()">&nbsp;
+            <input type="reset" value="clear">
+        </div>
+    </form>
+</body>
+
+</html>
